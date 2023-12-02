@@ -260,7 +260,11 @@ GameObject:
   - component: {fileID: 7573544150204263111}
   - component: {fileID: 4380637872725644773}
   - component: {fileID: 8910134770913797936}
+<<<<<<< Updated upstream
   - component: {fileID: 4360313811377036344}
+=======
+  - component: {fileID: 8162562916459218036}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Cube.019
   m_TagString: Untagged
@@ -333,7 +337,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!65 &4360313811377036344
+=======
+--- !u!65 &8162562916459218036
+>>>>>>> Stashed changes
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

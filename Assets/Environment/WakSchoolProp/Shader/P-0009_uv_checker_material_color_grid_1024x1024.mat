@@ -21,7 +21,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: P-0009_uv_checker_material_color_grid_1024x1024
+<<<<<<< Updated upstream
   m_Shader: {fileID: -6465566751694194690, guid: 7a3f51a6074fcd042950d7137cb00a1c,
+=======
+  m_Shader: {fileID: -6465566751694194690, guid: 182e31c1cc4d72e48ac79f9165002ac7,
+>>>>>>> Stashed changes
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -94,7 +98,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Opacity:
+<<<<<<< Updated upstream
         m_Texture: {fileID: 2800000, guid: ddb0080076da1df41bf89cc731a7ed39, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: d2649f42fbaa46b4ab5b947dfdeb904d, type: 3}
+>>>>>>> Stashed changes
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -148,6 +156,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity_Value: 5
     - _Parallax: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
