@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: P-0008-01uv_checker_material_color_grid_1024x1024
-  m_Shader: {fileID: -6465566751694194690, guid: 7774e163597b050438b258df3357f3af,
+  m_Shader: {fileID: -6465566751694194690, guid: 848636278460a6944aa098958705ec5b,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -140,6 +140,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _UVSec: 0
+    - _Use_smoothness: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
