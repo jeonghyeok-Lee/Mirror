@@ -4,28 +4,33 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Status")]
+    [SerializeField] float mass;
+    [SerializeField] float drag;
+    private float currentSpeed;
+
     public float sprintSpeed = 1.4f;
     public float walkSpeed = 0.6f;
-    public float crouchSpeed = 0.3f;
     public float normalSpeed = 3f;
     public bool isGround = false;
+    [Header("Crouch")]
+    public float crouchSpeed = 0.3f;
+    private float originHeight;
     public LayerMask whatIsGround;
     public float playerHeight = 1f;
     public float jumpForce = 8f;
     private PlayerInputHandler input;
-    private float changedSpeed = 1f;
     private CharacterController charCtrl;
     Vector3 direction;
     float terminalVelocity = 55f;
     public float jumpTimeout = .1f;
     public float fallTimeout = .15f;
-    float verticalVelocity;
+    float verticalVelocity = 0f;
     // timeout deltatime
     private float jumpTimeoutDelta;
     private float fallTimeoutDelta;
 
 
-    private Rigidbody rb;
     public enum MovementState
     {
         idle,
@@ -42,18 +47,20 @@ public class PlayerMovement : MonoBehaviour
     {
         TryGetComponent(out input);
         TryGetComponent(out charCtrl);
-        TryGetComponent(out rb);
     }
 
     private void Start()
     {
         jumpTimeoutDelta = jumpTimeout;
         fallTimeoutDelta = fallTimeout;
+
+        originHeight = charCtrl.height;
     }
 
     private void Update()
     {
         OnGround();
+        OnCeil();
         Movement();
         StateHandler();
     }
@@ -62,19 +69,27 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementPlayer();
         MovementPlayerJump();
+        MovementPlayerCrouch();
         MovementPlayerGravity();
     }
 
     private void OnGround()
     {
-        isGround = Physics.Raycast(transform.position, Vector3.down, 0.3f, whatIsGround);
+        isGround = Physics.Raycast(transform.position + new Vector3(0f, charCtrl.height * .5f), Vector3.down, charCtrl.height * .5f + .3f, whatIsGround);
     }
+    private void OnCeil()
+    {
+        if (verticalVelocity <= 0) return;
 
+        if (!Physics.Raycast(transform.position + new Vector3(0f, charCtrl.height * .5f), Vector3.up, charCtrl.height * .5f + .1f, whatIsGround)) return;
+
+        verticalVelocity *= -1f;
+    }
     private void Movement()
     {
         direction = gameObject.transform.forward * input.move.y + gameObject.transform.right * input.move.x;
 
-        direction *= changedSpeed * normalSpeed;
+        direction *= currentSpeed;
         direction.y = verticalVelocity;
     }
 
@@ -114,11 +129,25 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+    private void MovementPlayerCrouch()
+    {
+        if (state == MovementState.crouching)
+        {
+            charCtrl.height = originHeight * .5f;
+
+        }
+        else
+        {
+            charCtrl.height = originHeight;
+        }
+    }
     private void MovementPlayerGravity()
     {
         if (verticalVelocity < terminalVelocity)
         {
-            verticalVelocity += -9.81f * rb.mass * rb.drag * Time.deltaTime;
+            verticalVelocity += -9.81f * mass * drag * Time.deltaTime;
         }
     }
     private void StateHandler()
@@ -126,22 +155,22 @@ public class PlayerMovement : MonoBehaviour
         if (input.isWalk)
         {
             state = MovementState.walking;
-            changedSpeed = walkSpeed;
+            currentSpeed = walkSpeed;
         }
         else if (input.isSprint)
         {
             state = MovementState.sprinting;
-            changedSpeed = sprintSpeed;
+            currentSpeed = sprintSpeed;
         }
         else if (input.isCrouch)
         {
             state = MovementState.crouching;
-            changedSpeed = crouchSpeed;
+            currentSpeed = crouchSpeed;
         }
         else if (isGround)
         {
             state = MovementState.normal;
-            changedSpeed = 1f;
+            currentSpeed = normalSpeed;
         }
         else
         {

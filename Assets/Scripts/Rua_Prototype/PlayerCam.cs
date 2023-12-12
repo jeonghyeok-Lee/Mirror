@@ -11,7 +11,6 @@ public class PlayerCam : MonoBehaviour
 
     public float xSensitivity;
     public float ySensitivity;
-    public bool cursorLocked = true;
     float xRotation;
     float yRotation;
     private void Awake()
@@ -25,6 +24,8 @@ public class PlayerCam : MonoBehaviour
     }
     private void PlayerCamMovement()
     {
+        if (input.look.sqrMagnitude < 0.01f) return;
+
         float x = input.look.x * Time.deltaTime * xSensitivity;
         float y = input.look.y * Time.deltaTime * ySensitivity;
 
@@ -35,13 +36,7 @@ public class PlayerCam : MonoBehaviour
         camHolder.localRotation = Quaternion.Euler(xRotation, 0, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
-    private void OnApplicationFocus(bool hasFocus)
-    {
-        SetCursorState(cursorLocked);
-    }
 
-    private void SetCursorState(bool newState)
-    {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
-    }
+
+
 }
