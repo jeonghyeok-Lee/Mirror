@@ -8,7 +8,7 @@ public class FlashLight : MonoBehaviour
 
     // 나중에는 [SerializeField]를 제거할 예정
     [SerializeField] private bool isOn = false;  // 라이트의 상태
-    [SerializeField] private float lightIntensity = 10.0f;   // 라이트의 밝기 (현재)
+    [SerializeField] private float lightIntensity = 15.0f;   // 라이트의 밝기 (현재)
     [SerializeField] private float lightDistance = 10.0f;   // 라이트의 거리 (현재)
 
     void Start()
