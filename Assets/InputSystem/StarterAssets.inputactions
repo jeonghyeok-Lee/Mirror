@@ -49,6 +49,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GunTransMode",
+                    "type": "Button",
+                    "id": "9475ccef-e15b-46f3-8c15-9e1493ca6e7c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GunReload",
+                    "type": "Button",
+                    "id": "a1d285af-fdf6-4adf-a3aa-0958af622cea",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -236,6 +254,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "FlashLight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "44ffb8af-49e3-44a6-85d3-dad074916c53",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "GunTransMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be94e75c-0635-4475-aa62-dd3d4e0b5a23",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "GunReload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
