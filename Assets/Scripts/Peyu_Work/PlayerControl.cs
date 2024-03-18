@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     private int _animIDIsMove;
     private int _animIDIsRun;
 
+    private Transform _playerHeadTr;
+
     // Camera 관련
     [SerializeField]
     private float lookSensitivity;
@@ -36,15 +38,27 @@ public class PlayerControl : MonoBehaviour
         _characterRigid = GetComponent<Rigidbody>();
 
         AssignAnimationIDs();
+
+        if (_hasAnimator)
+        {
+            _playerHeadTr = _animator.GetBoneTransform(HumanBodyBones.Head);    // Head 본의 Transform 가져오기
+        }
     }
 
     void Update()
     {
         _hasAnimator = TryGetComponent(out _animator);
 
+        playerCamera.transform.position = _playerHeadTr.transform.position + _playerHeadTr.transform.up * 0.1f;
+
         Move();
         CameraRotation();
         ChracterRotation();
+    }
+
+    void LateUpdate()
+    {
+        HeadBoneRotation();
     }
 
     /// <summary>
@@ -105,6 +119,12 @@ public class PlayerControl : MonoBehaviour
         _currentCameraRotationX = Mathf.Clamp(_currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
 
         playerCamera.transform.localEulerAngles = new Vector3(_currentCameraRotationX, 0f, 0f);
+    }
+
+    private void HeadBoneRotation()
+    {
+        Vector3 HeadDir = playerCamera.transform.position + playerCamera.transform.forward * 10.0f;
+        _playerHeadTr.LookAt(HeadDir);
     }
 
     /// <summary>
