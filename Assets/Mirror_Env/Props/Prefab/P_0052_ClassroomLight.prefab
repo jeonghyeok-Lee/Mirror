@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6064071972626953011}
   - {fileID: 2360799795765779942}
-  - {fileID: 5100454592870127095}
+  - {fileID: 6853002036140426707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1149801153635136066
@@ -56,7 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &5620095464277333519
+--- !u!1 &7194274537725439014
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,9 +64,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5100454592870127095}
-  - component: {fileID: 8140042116829095314}
-  - component: {fileID: 7728000119149549716}
+  - component: {fileID: 6853002036140426707}
+  - component: {fileID: 5995467373026646419}
+  - component: {fileID: 9090829172578540988}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -74,34 +74,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5100454592870127095
+--- !u!4 &6853002036140426707
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5620095464277333519}
+  m_GameObject: {fileID: 7194274537725439014}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -25.899988, y: 5.500008, z: 96.59997}
-  m_LocalScale: {x: 100, y: 100, z: 99.999985}
+  m_LocalRotation: {x: 0.84253764, y: -0, z: -0.53863746, w: 0}
+  m_LocalPosition: {x: 48.44223, y: 93.663246, z: 543.3787}
+  m_LocalScale: {x: -95.23809, y: 95.23805, z: 95.238075}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1243250118447820832}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &8140042116829095314
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &5995467373026646419
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5620095464277333519}
+  m_GameObject: {fileID: 7194274537725439014}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 14.610299
+  m_Intensity: 5.9683104
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -115,18 +115,18 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
-      e00: 5.882353
+      e00: 1
       e01: 0
       e02: 0
       e03: 0
       e10: 0
-      e11: 0.5449591
+      e11: 1
       e12: 0
       e13: 0
       e20: 0
       e21: 0
-      e22: 0.20202021
-      e23: -1.020202
+      e22: 1
+      e23: 0
       e30: 0
       e31: 0
       e32: 0
@@ -142,28 +142,28 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1.8588486, y: 0.419067}
+  m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 9298
+  m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 10}
-  m_UseBoundingSphereOverride: 1
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7728000119149549716
+--- !u!114 &9090829172578540988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5620095464277333519}
+  m_GameObject: {fileID: 7194274537725439014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 35.754974
+  m_Intensity: 75
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 1.8588486
-  m_ShapeHeight: 0.419067
+  m_ShapeWidth: 0.5
+  m_ShapeHeight: 0.5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
   m_ObsoleteContactShadows: 0
-  m_PointlightHDType: 1
-  m_SpotLightShape: 2
+  m_PointlightHDType: 0
+  m_SpotLightShape: 0
   m_AreaLightShape: 0
 --- !u!1 &7702958079060011404
 GameObject:
