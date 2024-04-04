@@ -2,43 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType{
-    Quest,              // 퀘스트
-    Immediate,          // 즉시 사용
-    Persistent,         // 지속 사용
+public enum ItemType
+{
+    Quest,          // 퀘스트 아이템
+    Immediate,      // 즉시 사용 아이템
+    Persistent,     // 지속 사용 아이템
+    Ammunition,     // 탄약 아이템
 }
 
-public class BaseItem : MonoBehaviour
+[System.Serializable]
+public class BaseItemData
+{
+    [Tooltip("The name that will be displayed in the UI for this item")]
+    public string itemName;             // 아이템 이름
+    public string itemIconPath;         // 아이템 아이콘의 경로
+    public ItemType itemType;           // 아이템 타입
+    public string itemDescription;      // 아이템 설명
+}
+
+public abstract class BaseItem : MonoBehaviour
 {
     [Header("Information")]
-    [Tooltip("The name that will be displayed in the UI for this item")]
-    public string itemName; 
-    public Sprite itemIcon;
-    public ItemType itemType;               // 아이템 타입
-    public string itemDescription;          // 아이템 설명
-    
-    [Header("Item Paarmeters")]
-    public float delayBetweenUse = 0.5f;    // 사용 간격
+    public string itemID;               // 아이템 ID
+    public BaseItemData itemData;       // 아이템 데이터
 
     [Header("Audio & Visual")]
     public GameObject impactVFX;
-    public float impactVFXLifeTime;         // 지속시간
+    public float impactVFXLifeTime;     // 지속시간
 
-    public bool isActive;                   // 활성화 여부
-    public bool isUsable;                   // 사용 가능 여부
+    [Header("Item Parameters")]
+    public bool isActive;               // 활성화 여부
+    public bool isUsable;               // 사용 가능 여부
+    public string pickupArea;           // 픽업 가능한 영역
 
     /// <summary>
     /// 아이템을 사용할 때 호출되는 함수
     /// </summary>
     public abstract void UseItem();
-
-    /// <summary>
-    /// 아이템 활성화 여부를 설정하는 함수
-    /// </summary>
-    /// <param name="show"></param>
-    public void ShowItem(bool show)
-    {
-        gameObject.SetActive(show);
-        isActive = show;
-    }
 }
