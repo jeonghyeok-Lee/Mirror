@@ -31,12 +31,30 @@ public abstract class BaseItem : MonoBehaviour
     public float impactVFXLifeTime;     // 지속시간
 
     [Header("Item Parameters")]
-    public bool isActive;               // 활성화 여부
-    public bool isUsable;               // 사용 가능 여부
+    public bool isActive = false;       // 활성화 여부
+    public bool isUsable = false;       // 사용 가능 여부
     public string pickupArea;           // 픽업 가능한 영역
 
     /// <summary>
     /// 아이템을 사용할 때 호출되는 함수
     /// </summary>
     public abstract void UseItem();
+
+    /// <summary>
+    /// 아이템 활성화 함수
+    /// </summary>
+    public virtual void Activate()
+    {
+        isActive = true;
+        gameObject.SetActive(true);
+    }
+
+    /// <summary>
+    /// 아이템 비활성화 함수
+    /// </summary>
+    public virtual void Deactivate()
+    {
+        isActive = false;
+        gameObject.SetActive(false);
+    }
 }
