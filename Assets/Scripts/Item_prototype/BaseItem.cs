@@ -14,10 +14,10 @@ public enum ItemType
 public class BaseItemData
 {
     [Tooltip("The name that will be displayed in the UI for this item")]
-    public string itemName;             // 아이템 이름
-    public string itemIconPath;         // 아이템 아이콘의 경로
-    public ItemType itemType;           // 아이템 타입
-    public string itemDescription;      // 아이템 설명
+    public string name;             // 아이템 이름
+    public string iconPath;         // 아이템 아이콘의 경로
+    public ItemType type;           // 아이템 타입
+    public string description;      // 아이템 설명
 }
 
 public abstract class BaseItem : MonoBehaviour

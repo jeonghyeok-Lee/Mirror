@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 /// <summary>
@@ -9,6 +10,12 @@ public class ItemManager : MonoBehaviour
 {
     private static ItemManager _itemManager;              // 싱글톤 인스턴스
     public static ItemManager Instance => _itemManager;   // 인스턴스 접근용 프로퍼티
+
+    // json 파일 경로
+    public string jsonFilePath= Path.Combine(Application.dataPath, "Scripts/Item_prototype/Json/items.json");
+
+    // 아이템 데이터 딕셔너리
+    private Dictionary<string, BaseItemData> itemDictionary;
 
     public List<BaseItem> items;
     
@@ -29,6 +36,41 @@ public class ItemManager : MonoBehaviour
         foreach (BaseItem item in allBaseItems){
             items.Add(item);
             ShowItem(item, true);
+        }
+
+        InitializeItem();
+    }
+
+    void InitializeItem(){
+        if(File.Exists(jsonFilePath)){
+            // json 데이터 로드
+            string jsonData = FileManager.LoadJsonFile(jsonFilePath);
+
+            // json 데이터 -> 딕셔너리로 변환
+            itemDictionary = JsonUtility.FromJson<Dictionary<string, BaseItemData>>(jsonData);
+            
+            // itemDictionary의 모든 키와 값 출력
+            foreach (var kvp in itemDictionary)
+            {
+                Debug.Log($"Key: {kvp.Key}, Name: {kvp.Value.name}, Description: {kvp.Value.description}, Type: {kvp.Value.type}, IconPath: {kvp.Value.iconPath}");
+            }
+
+            ///////////////////////
+            /// 테스트
+            ///////////////////////
+            string itmeId="Item001";
+            if(itemDictionary.ContainsKey(itmeId)){
+
+                BaseItemData item = itemDictionary[itmeId];
+                // 아이템 정보 사용
+                Debug.Log($"Name: {item.name}, Description: {item.description}");
+            }
+            else{
+                Debug.LogError($"아이템 ID가 존재하지 않습니다. ID: {itmeId}");
+            }
+        }
+        else{
+            Debug.LogError($"JSON 파일을 찾을 수 없습니다. 경로: {jsonFilePath}");
         }
     }
 
