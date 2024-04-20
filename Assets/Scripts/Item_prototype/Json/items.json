@@ -4,5 +4,23 @@
 		"description" : "1",
 		"type" : "Quest",
 		"iconPath" : "1"
+	},
+	"Item002": {
+		"name" : "1",
+		"description" : "1",
+		"type" : "Quest",
+		"iconPath" : "1"
+	},
+	"Item003": {
+		"name" : "1",
+		"description" : "1",
+		"type" : "Quest",
+		"iconPath" : "1"
+	},
+	"Item004": {
+		"name" : "1",
+		"description" : "1",
+		"type" : "Quest",
+		"iconPath" : "1"
 	}
 }

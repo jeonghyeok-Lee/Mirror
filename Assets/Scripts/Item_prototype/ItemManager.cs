@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 /// <summary>
 /// 아이템을 관리하는 클래스
@@ -47,26 +48,13 @@ public class ItemManager : MonoBehaviour
             string jsonData = FileManager.LoadJsonFile(jsonFilePath);
 
             // json 데이터 -> 딕셔너리로 변환
-            itemDictionary = JsonUtility.FromJson<Dictionary<string, BaseItemData>>(jsonData);
+            itemDictionary = JsonConvert.DeserializeObject<Dictionary<string, BaseItemData>>(jsonData);
+            Debug.Log($"아이템 데이터 로드 완료. 아이템 개수: {itemDictionary.Count}");
             
             // itemDictionary의 모든 키와 값 출력
             foreach (var kvp in itemDictionary)
             {
                 Debug.Log($"Key: {kvp.Key}, Name: {kvp.Value.name}, Description: {kvp.Value.description}, Type: {kvp.Value.type}, IconPath: {kvp.Value.iconPath}");
-            }
-
-            ///////////////////////
-            /// 테스트
-            ///////////////////////
-            string itmeId="Item001";
-            if(itemDictionary.ContainsKey(itmeId)){
-
-                BaseItemData item = itemDictionary[itmeId];
-                // 아이템 정보 사용
-                Debug.Log($"Name: {item.name}, Description: {item.description}");
-            }
-            else{
-                Debug.LogError($"아이템 ID가 존재하지 않습니다. ID: {itmeId}");
             }
         }
         else{
