@@ -15,9 +15,10 @@ public class ItemManager : MonoBehaviour
     // json 파일 경로
     public string jsonFilePath= Path.Combine(Application.dataPath, "Scripts/Item_prototype/Json/items.json");
 
-    // 아이템 데이터 딕셔너리
-    private Dictionary<string, BaseItemData> itemDictionary;
+    // 아이템 데이터 딕셔너리 [ 아이템 ID, 아이템 데이터 ]
+    public Dictionary<string, BaseItemData> itemDictionary;   
 
+    // 필드에 생성된 Item 오브젝트들을 저장하는 리스트
     public List<BaseItem> items;
     
     void Awake(){
@@ -30,16 +31,18 @@ public class ItemManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        items = new List<BaseItem>();
+        // 아이템 정보 로드
+        InitializeItem();
         
         // 모든 BaseItem 타입의 객체를 찾아서 리스트에 추가
         BaseItem[] allBaseItems = Resources.FindObjectsOfTypeAll<BaseItem>();
         foreach (BaseItem item in allBaseItems){
-            items.Add(item);
-            ShowItem(item, true);
+            items.Add(item);        // 리스트에 추가
+            setItemData(item);      // 아이템 데이터 설정
+            ShowItem(item, true);   // 아이템 활성화
         }
 
-        InitializeItem();
+        
     }
 
     void InitializeItem(){
@@ -73,5 +76,16 @@ public class ItemManager : MonoBehaviour
         else{
             item.Deactivate();
         }
+    }
+
+    /// <summary>
+    /// 아이템 데이터 설정 함수
+    /// </summary>
+    /// <param name="item">설정하고자 하는 item</param>
+    private void setItemData(BaseItem item){
+        BaseItemData data = itemDictionary[item.itemID];
+
+        // 아이템 데이터 설정
+        item.itemData = data;
     }
 }

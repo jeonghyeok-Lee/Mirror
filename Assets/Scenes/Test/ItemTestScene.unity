@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f4e47ba17437f4d89cd46353604ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFilePath: C:/GitWorkSpace/Mirror/Assets\Scripts/Item_prototype/Json/items.json
   items: []
 --- !u!1 &512556381
 GameObject:
@@ -577,7 +578,7 @@ GameObject:
   - component: {fileID: 1703320767}
   - component: {fileID: 1703320771}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Item001
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -681,12 +682,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db3aa10732681a45b3715d84733549d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 
+  itemID: Item001
   itemData:
-    itemName: "\uD790\uB9C1 \uC544\uC774"
-    itemIconPath: 
-    itemType: 1
-    itemDescription: 
+    name: 
+    iconPath: 
+    type: 0
+    description: 
   impactVFX: {fileID: 0}
   impactVFXLifeTime: 0
   isActive: 0
