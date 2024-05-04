@@ -5,8 +5,8 @@ using UnityEngine;
 public enum ItemType
 {
     Quest,          // 퀘스트 아이템
-    Immediate,      // 즉시 사용 아이템
-    Persistent,     // 지속 사용 아이템
+    Immediate,      // 즉시 아이템
+    Persistent,     // 지속 아이템
     Ammunition,     // 탄약 아이템
 }
 
